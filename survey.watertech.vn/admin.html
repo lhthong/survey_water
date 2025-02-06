@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Admin Survey Water</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+  <link rel="stylesheet" href="leaflet/leaflet.css" />
+  <link rel="stylesheet" href="leaflet/easy-button.css">
+  <link rel="stylesheet" href="demo/leaflet-geoman.css" />
+  <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css" />
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #my {
+      zoom: 80%;
+    }
+
+    #example2 {
+      width: 100%;
+      height: 600px;
+    }
+
+    .noscroll {
+      background-color: Moccasin;
+      width: 100%;
+      height: 650px;
+      overflow: hidden;
+    }
+
+    .is-hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="">
+        <span class="d-none d-lg-block">SurveyWater</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div>
+  </header>
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+    <ul class="sidebar-nav" id="sidebar-nav">
+      <li class="nav-item menuarea">
+        <a class="nav-link " data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Các lĩnh vực</span>
+        </a>
+      </li><!-- End Components Nav -->
+      <li class="nav-item menuusers">
+        <a class="nav-link " data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Thành viên</span>
+        </a>
+
+      </li><!-- End Components Nav -->
+      <li class="nav-item">
+        <a class="nav-link" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+
+          <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                  <i class="bi bi-menu-button-wide"></i>&nbsp;Thống kê
+                </button>
+              </h2>
+              <div id="flush-collapseOne" class="accordion-collapse collapse menu_tk_area"
+                aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                  &nbsp; &nbsp; &nbsp; &nbsp;<i class="bi bi-arrow-right-square"></i>&nbsp;Các lĩnh vực khảo sát
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+      </li>
+      <li class="nav-item menuxembando">
+        <a class="nav-link" href="mapview.html">
+          <i class="bi bi-menu-button-wide"></i><span>Xem bản đồ</span>
+        </a>
+
+      </li><!-- End Components Nav -->
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+    <div class="col-lg-12 frmtk_area">
+      <div class="card">
+        <div class="card-body">
+
+          <form>
+            <div class="row mb-2">
+              <h4>Thống kê</h4>
+            </div>
+            <div class="row mb-2">
+              <label for="inputText" class="col-sm-2 col-form-label">Chọn Tỉnh/TP(*):</label>
+
+              <div class="col-sm-2">
+                <select class="form-control cbprovincefilter">
+                  <option value="ALL">Tất cả</option>
+                  <option value="01">Thành phố Hà Nội</option>
+                  <option value="02">Tỉnh Hà Giang</option>
+                  <option value="04">Tỉnh Cao Bằng</option>
+                  <option value="06">Tỉnh Bắc Kạn</option>
+                  <option value="08">Tỉnh Tuyên Quang</option>
+                  <option value="10">Tỉnh Lào Cai</option>
+                  <option value="11">Tỉnh Điện Biên</option>
+                  <option value="12">Tỉnh Lai Châu</option>
+                  <option value="14">Tỉnh Sơn La</option>
+                  <option value="15">Tỉnh Yên Bái</option>
+                  <option value="17">Tỉnh Hoà Bình</option>
+                  <option value="19">Tỉnh Thái Nguyên</option>
+                  <option value="20">Tỉnh Lạng Sơn</option>
+                  <option value="22">Tỉnh Quảng Ninh</option>
+                  <option value="24">Tỉnh Bắc Giang</option>
+                  <option value="25">Tỉnh Phú Thọ</option>
+                  <option value="26">Tỉnh Vĩnh Phúc</option>
+                  <option value="27">Tỉnh Bắc Ninh</option>
+                  <option value="30">Tỉnh Hải Dương</option>
+                  <option value="31">Thành phố Hải Phòng</option>
+                  <option value="33">Tỉnh Hưng Yên</option>
+                  <option value="34">Tỉnh Thái Bình</option>
+                  <option value="35">Tỉnh Hà Nam</option>
+                  <option value="36">Tỉnh Nam Định</option>
+                  <option value="37">Tỉnh Ninh Bình</option>
+                  <option value="38">Tỉnh Thanh Hóa</option>
+                  <option value="40">Tỉnh Nghệ An</option>
+                  <option value="42">Tỉnh Hà Tĩnh</option>
+                  <option value="44">Tỉnh Quảng Bình</option>
+                  <option value="45">Tỉnh Quảng Trị</option>
+                  <option value="46">Tỉnh Thừa Thiên Huế</option>
+                  <option value="48">Thành phố Đà Nẵng</option>
+                  <option value="49">Tỉnh Quảng Nam</option>
+                  <option value="51">Tỉnh Quảng Ngãi</option>
+                  <option value="52">Tỉnh Bình Định</option>
+                  <option value="54">Tỉnh Phú Yên</option>
+                  <option value="56">Tỉnh Khánh Hòa</option>
+                  <option value="58">Tỉnh Ninh Thuận</option>
+                  <option value="60">Tỉnh Bình Thuận</option>
+                  <option value="62">Tỉnh Kon Tum</option>
+                  <option value="64">Tỉnh Gia Lai</option>
+                  <option value="66">Tỉnh Đắk Lắk</option>
+                  <option value="67">Tỉnh Đắk Nông</option>
+                  <option value="68">Tỉnh Lâm Đồng</option>
+                  <option value="70">Tỉnh Bình Phước</option>
+                  <option value="72">Tỉnh Tây Ninh</option>
+                  <option value="74">Tỉnh Bình Dương</option>
+                  <option value="75">Tỉnh Đồng Nai</option>
+                  <option value="77">Tỉnh Bà Rịa - Vũng Tàu</option>
+                  <option value="79">Thành phố Hồ Chí Minh</option>
+                  <option value="80">Tỉnh Long An</option>
+                  <option value="82">Tỉnh Tiền Giang</option>
+                  <option value="83">Tỉnh Bến Tre</option>
+                  <option value="84">Tỉnh Trà Vinh</option>
+                  <option value="86">Tỉnh Vĩnh Long</option>
+                  <option value="87">Tỉnh Đồng Tháp</option>
+                  <option value="89">Tỉnh An Giang</option>
+                  <option value="91">Tỉnh Kiên Giang</option>
+                  <option value="92">Thành phố Cần Thơ</option>
+                  <option value="93">Tỉnh Hậu Giang</option>
+                  <option value="94">Tỉnh Sóc Trăng</option>
+                  <option value="95">Tỉnh Bạc Liêu</option>
+                  <option value="96">Tỉnh Cà Mau</option>
+                </select>
+              </div>
+
+              <label for="inputText" class="col-sm-2 col-form-label">Chọn Quận/Huyện:</label>
+
+              <div class="col-sm-2">
+                <select class="cbdistrictfilter form-control">
+                  <option value="ALL">Tất cả</option>
+                </select>
+              </div>
+              <label for="inputText" class="col-sm-2 col-form-label">Chọn Phường/Xã:</label>
+
+              <div class="col-sm-2">
+                <select class="cbwardsfilter form-control">
+                  <option value="ALL">Tất cả</option>
+                </select>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label for="inputText" class="col-sm-2 col-form-label">Chọn Lĩnh Vực(*):</label>
+              <div class="col-sm-3">
+                <select class="form-control cbareatk">
+                  <option value="ALL">Tất cả</option>
+                </select>
+              </div>
+              <div class="col-sm-3">
+                <button type="button" class="btn btn-info btnfilterarea">
+                  <i class="bi bi-funnel"></i> &nbsp;Lọc</button>
+              </div>
+
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Kết quả :</h3>
+              </div>
+              <div class="card-body p-0 table-reponsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th style="width: 10px">#</th>
+                      <th>Lĩnh vực</th>
+                      <th>Tên</th>
+                      <th>Địa chỉ</th>
+                      <th>Người tạo</th>
+                      <th>Ngày tạo</th>
+                      <th>Data</th>
+                    </tr>
+                  </thead>
+                  <tbody class="addListAREATK">
+
+                  </tbody>
+                </table>
+              </div>
+              <div class="numberpageareatk"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+    <!-- end thong ke area-->
+    <div class="col-lg-12 frmarea">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Thông tin các lĩnh vực khảo sát</h5>
+          <form>
+            <div class="row mb-3">
+              <label for="inputText" class="col-sm-2 col-form-label">Mã số Lĩnh Vực(*):</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control txtidarea">
+              </div>
+              <label for="inputText" class="col-sm-2 col-form-label">Tên Lĩnh Vực(*):</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control txtnamearea">
+              </div>
+
+            </div>
+
+
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label">Biểu tượng</label>
+              <div class="col-sm-8">
+                <div class="iconimage">
+
+                  <input id="imgiconarea" class="imghhhh" style="display:none" type="file" accept=".png, .jpg, .jpeg">
+                  <a href="#">
+                    <label for="imgiconarea" class="custom-file-upload" id="imgiconarea">
+                      <img width="25px" style="border:0px" src="images/iconuploadimage.png">Chọn
+                      Biểu tượng</label>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-2 imgiconarea is-hidden">
+                <img id="imgPreviewarea" width="100px" height="100">
+
+              </div>
+              <label class="progresscommonarea col-sm-2"> </label>
+            </div>
+            <div class="card-footer">
+              <button type="button" class="btn btn-info btnthemarea"><i class="bi bi-save"></i> &nbsp;Lưu</button>
+              <!-- &nbsp;<button type="button" class="btn btn-info btnxoaarea"><svg class="svg-inline--fa fa-trash" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="trash" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"></path></svg><!-- <i class="fa fa-trash" aria-hidden="true"></i> Font Awesome fontawesome.com -->
+
+              <button type="button" class="btn btn-info btnsuaarea"><i class="bi bi-pencil-square"></i>
+
+                &nbsp;Sửa</button>
+              <button type="button" class="btn btn-info float-right btnlamlaiarea"><svg
+                  class="svg-inline--fa fa-arrows-rotate" aria-hidden="true" focusable="false" data-prefix="fas"
+                  data-icon="arrows-rotate" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                  data-fa-i2svg="">
+                  <path fill="currentColor"
+                    d="M89.1 202.6c7.7-21.8 20.2-42.3 37.8-59.8c62.5-62.5 163.8-62.5 226.3 0L370.3 160H320c-17.7 0-32 14.3-32 32s14.3 32 32 32H447.5c0 0 0 0 0 0h.4c17.7 0 32-14.3 32-32V64c0-17.7-14.3-32-32-32s-32 14.3-32 32v51.2L398.4 97.6c-87.5-87.5-229.3-87.5-316.8 0C57.2 122 39.6 150.7 28.8 181.4c-5.9 16.7 2.9 34.9 19.5 40.8s34.9-2.9 40.8-19.5zM23 289.3c-5 1.5-9.8 4.2-13.7 8.2c-4 4-6.7 8.8-8.1 14c-.3 1.2-.6 2.5-.8 3.8c-.3 1.7-.4 3.4-.4 5.1V448c0 17.7 14.3 32 32 32s32-14.3 32-32V396.9l17.6 17.5 0 0c87.5 87.4 229.3 87.4 316.7 0c24.4-24.4 42.1-53.1 52.9-83.7c5.9-16.7-2.9-34.9-19.5-40.8s-34.9 2.9-40.8 19.5c-7.7 21.8-20.2 42.3-37.8 59.8c-62.5 62.5-163.8 62.5-226.3 0l-.1-.1L109.6 352H160c17.7 0 32-14.3 32-32s-14.3-32-32-32H32.4c-1.6 0-3.2 .1-4.8 .3s-3.1 .5-4.6 1z">
+                  </path>
+                </svg><!-- <i class="fa fa-refresh" aria-hidden="true"></i> Font Awesome fontawesome.com -->
+                &nbsp; Làm lại</button>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <div class="input-group input-group-sm">
+                  <input type="text" class="form-control txtfindarea"
+                    placeholder="Gõ nội dung và nhấn Enter hoặc nút Tìm ">
+                  <span class="input-group-append">
+                    <button type="button" class="btn btn-info btn-flat btnfindarea"><svg
+                        class="svg-inline--fa fa-magnifying-glass" aria-hidden="true" focusable="false"
+                        data-prefix="fas" data-icon="magnifying-glass" role="img" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 512 512" data-fa-i2svg="">
+                        <path fill="currentColor"
+                          d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z">
+                        </path>
+                      </svg><!-- <i class="fa fa-search" aria-hidden="true"></i> Font Awesome fontawesome.com -->
+                      &nbsp;Tìm</button>
+                  </span>
+                </div>
+              </div>
+              <div class="card-header">
+                <h3 class="card-title">Các lĩnh vực khảo sát:</h3>
+              </div>
+              <div class="card-body p-0 table-reponsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th style="width: 10px">#</th>
+                      <th>Mã LV</th>
+                      <th>Tên LV</th>
+
+                      <th>Icon</th>
+
+                      <!-- <th style="width: 100px">Thao tác</th>-->
+                    </tr>
+                  </thead>
+                  <tbody class="addListAREA">
+                    <tr data-idarea="CTK" data-namearea="Cống trên kênh" data-idpro="undefined"
+                      data-iconarea="cd4a94bad555d9b936596cc5ac0cf238.png" data-vt="0">
+                      <td>1</td>
+                      <td>CTK</td>
+                      <td>Cống trên kênh</td>
+                      <td><img src="https://survey.watertech.vn/serverfileupload/cd4a94bad555d9b936596cc5ac0cf238.png"
+                          class="img-circle elevation-2" width="40px" height="40px" alt="avartar"></td>
+                    </tr>
+                    <tr data-idarea="HC" data-namearea="Hồ chứa" data-idpro="undefined"
+                      data-iconarea="ae00707c978ad2ff4d8dbe393c688673.png" data-vt="1">
+                      <td>2</td>
+                      <td>HC</td>
+                      <td>Hồ chứa</td>
+                      <td><img src="https://survey.watertech.vn/serverfileupload/ae00707c978ad2ff4d8dbe393c688673.png"
+                          class="img-circle elevation-2" width="40px" height="40px" alt="avartar"></td>
+                    </tr>
+                    <tr data-idarea="KD" data-namearea="Kênh Dẫn" data-idpro="undefined"
+                      data-iconarea="945974aa37f8d18cd1f8ad192d609171.png" data-vt="2">
+                      <td>3</td>
+                      <td>KD</td>
+                      <td>Kênh Dẫn</td>
+                      <td><img src="https://survey.watertech.vn/serverfileupload/945974aa37f8d18cd1f8ad192d609171.png"
+                          class="img-circle elevation-2" width="40px" height="40px" alt="avartar"></td>
+                    </tr>
+                    <tr data-idarea="KT" data-namearea="Khu tưới" data-idpro="undefined"
+                      data-iconarea="482a35340453649d0e702af0f0d6d422.png" data-vt="3">
+                      <td>4</td>
+                      <td>KT</td>
+                      <td>Khu tưới</td>
+                      <td><img src="https://survey.watertech.vn/serverfileupload/482a35340453649d0e702af0f0d6d422.png"
+                          class="img-circle elevation-2" width="40px" height="40px" alt="avartar"></td>
+                    </tr>
+                    <tr data-idarea="MD" data-namearea="Mẫu đất" data-idpro="undefined"
+                      data-iconarea="ab53eb6da2b1324d289324c583d4866f.png" data-vt="4">
+                      <td>5</td>
+                      <td>MD</td>
+                      <td>Mẫu đất</td>
+                      <td><img src="https://survey.watertech.vn/serverfileupload/ab53eb6da2b1324d289324c583d4866f.png"
+                          class="img-circle elevation-2" width="40px" height="40px" alt="avartar"></td>
+                    </tr>
+                    <tr data-idarea="MN" data-namearea="Mẫu nước" data-idpro="undefined"
+                      data-iconarea="9a23963d8edfe5d654d53d11bd90f0a9.png" data-vt="5">
+                      <td>6</td>
+                      <td>MN</td>
+                      <td>Mẫu nước</td>
+                      <td><img src="https://survey.watertech.vn/serverfileupload/9a23963d8edfe5d654d53d11bd90f0a9.png"
+                          class="img-circle elevation-2" width="40px" height="40px" alt="avartar"></td>
+                    </tr>
+                    <tr data-idarea="VTSL" data-namearea="Vị trí sạt lở" data-idpro="undefined"
+                      data-iconarea="51826581567d187ba7bb6d51ff9690bf.png" data-vt="6">
+                      <td>7</td>
+                      <td>VTSL</td>
+                      <td>Vị trí sạt lở</td>
+                      <td><img src="https://survey.watertech.vn/serverfileupload/51826581567d187ba7bb6d51ff9690bf.png"
+                          class="img-circle elevation-2" width="40px" height="40px" alt="avartar"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="numberpagearea"><button type="button" class="btn btn-outline btn-default"
+                  style="background-color: #5cb85c" value="0">1</button></div>
+            </div>
+          </form><!-- End General Form Elements -->
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="row frmusers card is-hidden">
+        <div class="card-header">
+          <h3 class="card-title">
+            <i class="far fa-star mr-1"></i>
+            Thông tin thành viên
+          </h3>
+        </div>
+        <div class="card-body">
+          <div class="tab-content p-0">
+            <div class="card card-info">
+              <form class="form-horizontal">
+                <div class="card-body">
+                  <div class="row mb-3">
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">UserName(*)</label>
+                    <div class=" col-sm-4">
+                      <input type="hidden" class="form-control txtiduser" placeholder="">
+                      <input type="text" class="form-control txtusername" placeholder="">
+                    </div>
+                    <label for="inputPassword3" class="col-sm-2 col-form-label ">Họ và tên(*)</label>
+                    <div class="col-sm-4">
+                      <input type="text" class="form-control txtfullname" placeholder="">
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Giới tính</label>
+                    <div class=" col-sm-4">
+                      <select class="cbgender form-control">
+                        <option value="1">Nam</option>
+                        <option value="0">Nữ</option>
+                      </select>
+                    </div>
+                    <label for="inputPassword3" class="col-sm-2 col-form-label ">Điện thoại</label>
+                    <div class="col-sm-4">
+                      <input type="text" class="form-control txtphone" placeholder="">
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label ">Địa chỉ</label>
+                    <div class="col-sm-4">
+                      <input type="text" class="form-control txtaddress" placeholder="">
+                    </div>
+                    <label class="col-sm-2 col-form-label">Quyền(*)</label>
+                    <div class=" col-sm-4">
+                      <select class="cbidquyen form-control">
+                        <option value="2">Quyền thu thập</option>
+                        <option value="1">Quyền biên tập</option>
+                        <option value="0">Quyền quản trị</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="card-footer">
+                    <button type="button" class="btn btn-info btnthemuser"><i
+                        class="far fa-plus-square"></i>&nbsp;Thêm</button>&nbsp;<button type="button"
+                      class="btn btn-info btnluuuser"><i class="bi bi-save"></i>&nbsp;Lưu</button>&nbsp;<button
+                      type="button" class="btn btn-info btnxoauser"><i class="fa fa-trash"
+                        aria-hidden="true"></i>&nbsp;Xóa</button>&nbsp;<button type="button"
+                      class="btn btn-info btnsuauser"><i class="bi bi-pencil-square"></i>&nbsp;Sửa</button>
+                    <button type="button" class="btn btn-info float-right btnlamlaiuser"><i class="fa fa-refresh"
+                        aria-hidden="true"></i>&nbsp;Làm lại</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <div class="input-group input-group-sm">
+                  <input type="text" class="form-control txtfinduser"
+                    placeholder='Gõ nội dung và nhấn Enter hoặc nút Tìm '>
+                  <span class="input-group-append">
+                    <button type="button" class="btn btn-info btn-flat btnfinduser"><i class="fa fa-search"
+                        aria-hidden="true"></i>
+                      &nbsp;Tìm</button>
+                  </span>
+                </div>
+              </div>
+              <div class="card-header">
+                <h3 class="card-title">Các thành viên hiện có:</h3>
+              </div>
+              <div class="card-body p-0 table-reponsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th style="width: 10px">#</th>
+                      <th>Tên đăng nhập</th>
+                      <th>Họ và tên</th>
+                      <th>Giới tính</th>
+                      <th>Điện thoại</th>
+                      <th>Địa chỉ</th>
+                      <th>Quyền</th>
+                      <th style="width: 100px">Thao tác</th>
+                    </tr>
+                  </thead>
+                  <tbody class="addListUSER">
+                  </tbody>
+                </table>
+              </div>
+              <div class="numberpageuser"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- phan cong-->
+
+
+      <!-- modal doi mat khau -->
+      <div class="modal fade showmodalchangematkhau" id="modal-default">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Thay đổi mật khẩu</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="card">
+                <div class="card-body login-card-body">
+
+                  <form action="#" method="post">
+
+                    <div class="input-group mb-3">
+                      <input type="password" class="form-control txtpassnew" placeholder="Mật khẩu mới">
+                      <div class="input-group-append">
+                        <div class="input-group-text">
+                          <span class="fas fa-key"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="input-group mb-3">
+                      <input type="password" class="form-control txtpassnewagain" placeholder="Nhập lại mật khẩu mới">
+                      <div class="input-group-append">
+                        <div class="input-group-text">
+                          <span class="fas fa-key"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+              <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary btn_change_pass">Thay đổi</button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>Phòng Khoa Học Và Đối Ngoại</span></strong>. All Rights Reserved
+    </div>
+    <!-- <div class="credits">
+     Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+    </div> -->
+  </footer><!-- End Footer -->
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+  <script src="plug-in/js/all.min.js"></script>
+  <script src="plug-in/bootbox/bootbox.js"></script>
+  <script src="plug-in/bootbox/bootbox.min.js"></script>
+
+  <script src="plugins/jquery/jquery.min.js"></script>
+
+  <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   -->
+  <script src="leaflet/leaflet.js"></script>
+  <script src="leaflet/easy-button.js"></script>
+  <script src="js/bootbox.min.js"></script>
+  <script src="demo/leaflet-geoman.min.js"></script>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    function loadJS(FILE_URL, async = true) {
+      let scriptEle = document.createElement("script");
+
+      scriptEle.setAttribute("src", FILE_URL);
+      scriptEle.setAttribute("type", "text/javascript");
+      scriptEle.setAttribute("async", async);
+
+      document.body.appendChild(scriptEle);
+
+      // success event 
+      scriptEle.addEventListener("load", () => {
+        console.log("File loaded")
+      });
+      // error event
+      scriptEle.addEventListener("error", (ev) => {
+        console.log("Error on loading file", ev);
+      });
+    }
+    // $(document).ready(function () {
+    const d = new Date();
+    let time = d.getTime();
+    loadJS("js/common.js?v=" + time, false);
+    loadJS("js/xulyarea.js?v=" + time, false);
+    // loadJS("js/xulyjoin.js?v=" + time, false);
+    // loadJS("js/xulyduan.js?v=" + time, false);
+    loadJS("js/xulyusers.js?v=" + time, false);
+    loadJS("js/menu.js?v=" + time, false);
+    loadJS("js/xuly_tk.js?v=" + time, false);
+
+  //});
+  </script>
+</body>
+
+</html>

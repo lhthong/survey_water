@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="css/login.css">
+  <meta charset="utf-8">
+  <title>Login Survey</title>
+  
+</head>
+<body >
+    <section style="text-align:center;">
+        <div class="form-box">
+            <div class="form-value">
+                
+                    <h2>Đăng nhập</h2>
+                    <div class="inputbox">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <input type="email" required class="txtemail">
+                        <label for="">Email</label>
+                    </div>
+                    <div class="inputbox">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        <input type="password" required class="txtpass">
+                        <label for="">Mật khẩu</label>
+                    </div>
+                    <div class="forget">
+                        <label for=""><input type="checkbox" checked="true" class="rememberlogin">Ghi nhớ đăng nhập</label>
+                       
+                      
+                    </div>
+                    <button class="btnlogin">Đăng nhập</button>
+                   
+            </div>
+        </div>
+    </section>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/xulylogin.js"></script>
+<script src="js/bootbox.min.js"></script>
+<script>
+    function loadJS(FILE_URL, async = true) {
+    let scriptEle = document.createElement("script");
+  
+    scriptEle.setAttribute("src", FILE_URL);
+    scriptEle.setAttribute("type", "text/javascript");
+    scriptEle.setAttribute("async", async);
+  
+    document.body.appendChild(scriptEle);
+  
+    // success event 
+    scriptEle.addEventListener("load", () => {
+      console.log("File loaded")
+    });
+     // error event
+    scriptEle.addEventListener("error", (ev) => {
+      console.log("Error on loading file", ev);
+    });
+  }
+  //$(document).ready(function () {
+    const d = new Date();
+  let time = d.getTime();
+  loadJS("js/common.js?v="+time, false);
+  loadJS("js/xulylogin.js?v="+time, false);
+ 
+ // });
+  </script>
+</body>
+</html>

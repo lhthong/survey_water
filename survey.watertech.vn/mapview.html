@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Survey Water</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+  <link rel="stylesheet" href="leaflet/leaflet.css" />
+  <link rel="stylesheet" href="leaflet/easy-button.css">
+  <link rel="stylesheet" href="demo/leaflet-geoman.css" />
+  <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css" />
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+
+  <!-- Vendor CSS Files -->
+  <!-- <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #my {
+      zoom: 80%;
+    }
+
+    #example2 {
+      width: 100%;
+      height: 600px;
+    }
+
+    .noscroll {
+      background-color: Moccasin;
+      width: 100%;
+      height: 650px;
+      overflow: hidden;
+    }
+
+    .is-hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="">
+        <span class="d-none d-lg-block">SurveyWater</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <!-- <div class="search-bar">
+      <div class="search-form d-flex align-items-center">
+        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+        <button type="button" title="Search"><i class="bi bi-search"></i></button>
+      </div>
+    </div> -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+        <!-- <li class="nav-item dropdown pe-3">
+          Chọn lớp bản đồ
+          </li> -->
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle addvartar">
+            <span class="d-none d-md-block dropdown-toggle ps-2 addusername"></span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+               
+                <span class="roleusername"></span>
+              </a>
+            </li>
+            <li class="btn_change_matkhau">
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-person"></i>
+                <span>Đổi mật khẩu</span>
+              </a>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="btn_log_out">
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Thoát</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+
+      <li class="nav-item">
+        <a class="nav-link " data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Lọc và tra cứu</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+          <li>
+            <div class="col-lg-12">
+              <!-- Bordered Tabs -->
+              <ul class="nav nav-tabs nav-tabs-bordered" id="borderedTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#filterbando"
+                    type="button" role="tab" aria-controls="home" aria-selected="true">Bản đồ</button>
+                </li>
+                <!-- <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#bordered-profile" type="button" role="tab" aria-controls="profile" aria-selected="false" tabindex="-1">Profile</button>
+                  </li> -->
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#searchbando"
+                    type="button" role="tab" aria-controls="contact" aria-selected="false" tabindex="-1">Tìm
+                    kiếm</button>
+                </li>
+              </ul>
+              <div class="tab-content pt-2" id="borderedTabContent">
+                <div class="tab-pane fade show active" id="filterbando" role="tabpanel" aria-labelledby="home-tab">
+                  <div class="col-lg-12">
+
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">Chọn lớp bản đồ</h5>
+                        <select class="form-control chooselayermap">
+                          <option value="osmLayer" >Bản Đồ Leaflet</option>
+                          <option value="topoLayer" selected>Bản Đồ Vệ Tinh</option>
+                        </select>
+                        <h5 class="card-title">Chọn dữ liệu</h5>
+
+                        <!-- Accordion without outline borders -->
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                          <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                aria-controls="flush-collapseOne">
+                                Chọn tỉnh
+                              </button>
+                            </h2>
+                            <div id="flush-collapseOne" class="accordion-collapse collapse"
+                              aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                              <div class="accordion-body">
+
+                                <select class="form-control cbprovincefilter">
+                                  <option value="NULL">Tất cả</option>
+                                  <option value="01">Thành phố Hà Nội</option>
+                                  <option value="02">Tỉnh Hà Giang</option>
+                                  <option value="04">Tỉnh Cao Bằng</option>
+                                  <option value="06">Tỉnh Bắc Kạn</option>
+                                  <option value="08">Tỉnh Tuyên Quang</option>
+                                  <option value="10">Tỉnh Lào Cai</option>
+                                  <option value="11">Tỉnh Điện Biên</option>
+                                  <option value="12">Tỉnh Lai Châu</option>
+                                  <option value="14">Tỉnh Sơn La</option>
+                                  <option value="15">Tỉnh Yên Bái</option>
+                                  <option value="17">Tỉnh Hoà Bình</option>
+                                  <option value="19">Tỉnh Thái Nguyên</option>
+                                  <option value="20">Tỉnh Lạng Sơn</option>
+                                  <option value="22">Tỉnh Quảng Ninh</option>
+                                  <option value="24">Tỉnh Bắc Giang</option>
+                                  <option value="25">Tỉnh Phú Thọ</option>
+                                  <option value="26">Tỉnh Vĩnh Phúc</option>
+                                  <option value="27">Tỉnh Bắc Ninh</option>
+                                  <option value="30">Tỉnh Hải Dương</option>
+                                  <option value="31">Thành phố Hải Phòng</option>
+                                  <option value="33">Tỉnh Hưng Yên</option>
+                                  <option value="34">Tỉnh Thái Bình</option>
+                                  <option value="35">Tỉnh Hà Nam</option>
+                                  <option value="36">Tỉnh Nam Định</option>
+                                  <option value="37">Tỉnh Ninh Bình</option>
+                                  <option value="38">Tỉnh Thanh Hóa</option>
+                                  <option value="40">Tỉnh Nghệ An</option>
+                                  <option value="42">Tỉnh Hà Tĩnh</option>
+                                  <option value="44">Tỉnh Quảng Bình</option>
+                                  <option value="45">Tỉnh Quảng Trị</option>
+                                  <option value="46">Tỉnh Thừa Thiên Huế</option>
+                                  <option value="48">Thành phố Đà Nẵng</option>
+                                  <option value="49">Tỉnh Quảng Nam</option>
+                                  <option value="51">Tỉnh Quảng Ngãi</option>
+                                  <option value="52">Tỉnh Bình Định</option>
+                                  <option value="54">Tỉnh Phú Yên</option>
+                                  <option value="56">Tỉnh Khánh Hòa</option>
+                                  <option value="58">Tỉnh Ninh Thuận</option>
+                                  <option value="60">Tỉnh Bình Thuận</option>
+                                  <option value="62">Tỉnh Kon Tum</option>
+                                  <option value="64">Tỉnh Gia Lai</option>
+                                  <option value="66">Tỉnh Đắk Lắk</option>
+                                  <option value="67">Tỉnh Đắk Nông</option>
+                                  <option value="68">Tỉnh Lâm Đồng</option>
+                                  <option value="70">Tỉnh Bình Phước</option>
+                                  <option value="72">Tỉnh Tây Ninh</option>
+                                  <option value="74">Tỉnh Bình Dương</option>
+                                  <option value="75">Tỉnh Đồng Nai</option>
+                                  <option value="77">Tỉnh Bà Rịa - Vũng Tàu</option>
+                                  <option value="79">Thành phố Hồ Chí Minh</option>
+                                  <option value="80">Tỉnh Long An</option>
+                                  <option value="82">Tỉnh Tiền Giang</option>
+                                  <option value="83">Tỉnh Bến Tre</option>
+                                  <option value="84">Tỉnh Trà Vinh</option>
+                                  <option value="86">Tỉnh Vĩnh Long</option>
+                                  <option value="87">Tỉnh Đồng Tháp</option>
+                                  <option value="89">Tỉnh An Giang</option>
+                                  <option value="91">Tỉnh Kiên Giang</option>
+                                  <option value="92">Thành phố Cần Thơ</option>
+                                  <option value="93">Tỉnh Hậu Giang</option>
+                                  <option value="94">Tỉnh Sóc Trăng</option>
+                                  <option value="95">Tỉnh Bạc Liêu</option>
+                                  <option value="96">Tỉnh Cà Mau</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingTwo">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                aria-controls="flush-collapseTwo">
+                                Chọn huyện
+                              </button>
+                            </h2>
+                            <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                              aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                              <div class="accordion-body">
+                                <select class="cbdistrictfilter form-control">
+
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingThree">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                aria-controls="flush-collapseTwo">
+                                Chọn Xã
+                              </button>
+                            </h2>
+                            <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                              aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                              <div class="accordion-body">
+                                <select class="cbwardsfilter form-control">
+
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                        </div><!-- End Accordion without outline borders -->
+
+                      </div>
+                    </div>
+
+                  </div>
+                  <!--cac cong trinh thuy loi-->
+                  <div class="col-lg-12">
+
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">Các lĩnh vực thủy lợi</h5>
+
+                        <!-- Accordion without outline borders -->
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                          <div class="accordion-item">
+                            <table>
+                              <tr>
+                              <tr>
+                                <td></td>
+                                <td><button type="button" class="btn btn-success rounded-pill"><input type="checkbox"
+                                      class="rounded-pill" name="checkedAll" id="checkedAll" />&nbsp;Chọn tất
+                                    cả</button></td>
+                                <td><button type="button" class="btn btn-success rounded-pill btnfiltermap">Lọc</button>
+                                </td>
+                              </tr>
+                              <tbody class="filtermap">
+
+                              </tbody>
+                            </table>
+
+                          </div>
+
+                        </div><!-- End Accordion without outline borders -->
+
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <!-- <div class="tab-pane fade" id="bordered-profile" role="tabpanel" aria-labelledby="profile-tab">
+                  av
+                  </div> -->
+                <div class="tab-pane fade" id="searchbando" role="tabpanel" aria-labelledby="contact-tab">
+                  <div class="col-lg-12">
+                    <h5 class="card-title">Chọn lớp bản đồ</h5>
+                    <select class="form-control chooselayermapsearch">
+                      <option value="osmLayer" >Bản Đồ Leaflet</option>
+                      <option value="topoLayer" selected>Bản Đồ Vệ Tinh</option>
+                    </select>
+                  </div>
+                  <p>&nbsp;</p>
+                  <div class="col-lg-12">
+                    <div class="search-form d-flex align-items-center">
+                      <div class="col-lg-8">
+                      <input type="text" class="form-control txtsearch" placeholder="Search" title="Enter search keyword">
+                    </div>
+                      <div class="col-lg-2">
+                      <button type="button" class="form-control btnseachmap" title="Search"><i class="bi bi-search"></i></button>
+                    </div>
+                    <div class="col-lg-2">
+                      <button type="button" class="form-control btnremovemap" title="Search"><i class="fa fa-remove"></i></button>
+                    </div>
+                    </div>
+                    <div class="card">
+
+                      <div class="card-body">
+                       
+                        
+                        
+                        <h5 class="card-title">Các lĩnh vực thủy lợi</h5>
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                          <div class="accordion-item">
+                            <table>
+                              <tr>
+                              <tr>
+                                <td></td>
+                                <td><button type="button" class="btn btn-success rounded-pill"><input type="checkbox"
+                                    class="rounded-pill" name="checkedAllS" id="checkedAllS" />&nbsp;Chọn tất
+                                    cả</button></td>
+                                <td>
+                                  
+                                </td>
+                              </tr>
+                              <tbody class="searchmap">
+
+                              </tbody>
+                            </table>
+
+                          </div>
+
+                        </div>
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                          <div class="accordion-item">
+                            <table>
+                              <tr>
+                              <tr>
+                              
+                                <td colspan="2"><button type="button" class="btn btn-success">Kết quả tìm kiếm (<b class="numberresult">0</b>)</button></td>
+                              
+                              </tr>
+                              <tbody class="resultsearch">
+
+                              </tbody>
+                            </table>
+
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div><!-- End Bordered Tabs -->
+
+
+
+
+            </div>
+          </li>
+        </ul>
+      </li><!-- End Components Nav -->
+
+
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <section class="section content">
+      <div  class="row">
+        <div class="col-lg-12">
+          <div  id="example2"></div>
+        </div>
+      </div>
+
+      <!-- dsa-->
+      <div class="modal fade showchoosearea" id="ExtralargeModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp;
+                Thiết lập dữ liệu</h4>
+            </div>
+            <div class="modal-body getdata">
+              <div class="row">
+                <div class="col-md-6">
+                  <select class="form-control addDataArea" id="addDataArea">
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <button type="button" class="btn btn-danger bntrefesharea"><i class="fa fa-refresh"
+                      aria-hidden="true"></i>
+                    &nbsp; Làm mới</button>
+                </div>
+
+              </div>
+              <div class="tinhhuyenxa row is-hidden">
+                <div class="col-md-4">
+                  <label>Tỉnh/Thành Phố</label>
+                  <select class="form-control cbprovince">
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <label>Quận/Huyện</label>
+                  <select class="form-control cbdistrict">
+
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <label>Xã/Phường</label>
+                  <select class="form-control cbwards">
+                  </select>
+                </div>
+                <div class="col-md-12">
+                  <label>Địa chỉ cụ thể</label>
+
+                  <input type="text" class="form-control addresschung">
+                </div>
+              </div>
+              <!--Hồ chứa -->
+              <div class="ho_chua is-hidden row">
+                <div class="col-md-12">
+                  <div class="card">
+                    <!-- Bordered Tabs Justified -->
+                    <ul class="nav nav-tabs nav-tabs-bordered d-flex" id="borderedTabJustified" role="tablist">
+                      <li class="nav-item flex-fill" role="presentation">
+                        <button class="nav-link w-100 active" id="home-tab" data-bs-toggle="tab"
+                          data-bs-target="#ho_chua_thong_tin_cong_trinh" type="button" role="tab" aria-controls="home"
+                          aria-selected="true">TT công trình
+                        </button>
+                      </li>
+                      <li class="nav-item flex-fill" role="presentation">
+                        <button class="nav-link w-100" id="profile-tab" data-bs-toggle="tab"
+                          data-bs-target="#ho_chua_thong_so_thiet_ke" type="button" role="tab" aria-controls="profile"
+                          aria-selected="false">Thông số thiết kế
+                        </button>
+                      </li>
+                      <li class="nav-item flex-fill" role="presentation">
+                        <button class="nav-link w-100" id="contact-tab" data-bs-toggle="tab"
+                          data-bs-target="#ho_chua_thong_so_thiet_ke_dap" type="button" role="tab"
+                          aria-controls="contact" aria-selected="false">TS thiết kế đập
+                        </button>
+                      </li>
+                      <li class="nav-item flex-fill" role="presentation">
+                        <button class="nav-link w-100" id="contact-tab" data-bs-toggle="tab"
+                          data-bs-target="#ho_chua_thong_so_thiet_ke_tran" type="button" role="tab"
+                          aria-controls="contact" aria-selected="false">TS thiết kế Tràn
+
+                        </button>
+                      </li>
+                      <li class="nav-item flex-fill" role="presentation">
+                        <button class="nav-link w-100" id="contact-tab" data-bs-toggle="tab"
+                          data-bs-target="#ho_chua_thong_so_cong_lay_tu_dap" type="button" role="tab"
+                          aria-controls="contact" aria-selected="false">TS Cống lấy nước từ đập
+
+                        </button>
+                      </li>
+                      <li class="nav-item flex-fill" role="presentation">
+                        <button class="nav-link w-100" id="contact-tab" data-bs-toggle="tab"
+                          data-bs-target="#ho_chua_nha_quan_ly" type="button" role="tab" aria-controls="contact"
+                          aria-selected="false">Nhà QL
+
+
+                        </button>
+                      </li>
+                      <li class="nav-item flex-fill" role="presentation">
+                        <button class="nav-link w-100" id="contact-tab" data-bs-toggle="tab"
+                          data-bs-target="#ho_chua_duong_van_hanh" type="button" role="tab" aria-controls="contact"
+                          aria-selected="false">Đường vận hành
+
+
+
+                        </button>
+                      </li>
+                    </ul>
+                    <div class="tab-content pt-2" id="borderedTabJustifiedContent">
+                      <div class="tab-pane fade show active" id="ho_chua_thong_tin_cong_trinh" role="tabpanel"
+                        aria-labelledby="home-tab">
+                        <div class="row">
+                          <div class="col-md-4">
+                            <label>Tên hồ chứa </label>
+                            <input type="text" class="form-control ho_chua_ten_ho">
+                          </div>
+                          <div class="col-md-4">
+                            <label>Cấp công trình
+                            </label>
+                            <input type="number" class="form-control ho_chua_cap_cong_trinh">
+                          </div>
+                          <div class="col-md-4">
+                            <label>Đơn vị thiết kế
+                            </label>
+                            <input type="text" class="form-control ho_chua_don_vi_thiet_ke">
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-md-4">
+                            <label>Đơn vị thi công
+                            </label>
+                            <input type="text" class="form-control ho_chua_don_vi_thi_cong">
+                          </div>
+                          <div class="col-md-4">
+                            <label>Đơn vị quản lý
+
+                            </label>
+                            <input type="text" class="form-control ho_chua_don_vi_quan_ly">
+                          </div>
+                          <div class="col-md-4">
+                            <label>Năm xây dựng
+
+                            </label>
+                            <input type="number" class="form-control ho_chua_nam_xay_dung">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-4">
+                            <label>Năm hoàn thành
+                            </label>
+                            <input type="number" class="form-control ho_chua_nam_hoan_thanh">
+                          </div>
+                          <div class="col-md-4">
+                            <label>Diện tích tưới
+
+                            </label>
+                            <input type="number" class="form-control ho_chua_dien_tich_tuoi">
+                          </div>
+
+                        </div>
+                      </div>
+                      <div class="tab-pane fade" id="ho_chua_thong_so_thiet_ke" role="tabpanel"
+                        aria-labelledby="profile-tab">
+                        <div class="row">
+                          <div class="col-md-4">
+                            <label>Diện tích lưu vực
+
+                            </label>
+                            <input type="text" class="form-control ho_chua_dien_tich_luu_vuc">
+                          </div>
+                          <div class="col-md-4">
+                            <label>Dung tích hữu dụng
+
+
+                            </label>
+                            <input type="number" class="form-control ho_chua_dien_tich_huu_dung">
+                          </div>
+                          <div class="col-md-4">
+                            <label>Mực nước dâng bình thường
+                            </label>
+                            <input type="number" class="form-control ho_chua_dien_tich_muc_nuoc_dang_binh_thuong">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-4">
+                            <label>Mực nước phòng lũ thiết kế
+                            </label>
+                            <input type="number" class="form-control ho_chua_muc_nuoc_phong_lu_thiet_ke">
+                          </div>
+                          <div class="col-md-4">
+                            <label>Mực nước chết
+                            </label>
+                            <input type="number" class="form-control ho_chua_muc_nuoc_chet">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane fade" id="ho_chua_thong_so_thiet_ke_dap" role="tabpanel"
+                        aria-labelledby="contact-tab">
+                        <div class="row">
+                          <div class="col-md-4">
+                            <label>Loại đập
+                            </label>
+                            <input type="text" class="form-control ho_chua_loai_dap">
+                          </div>
+                          <div class="col-md-4">
+                            <label>Bề rộng đập
+                            </label>
+                            <input type="number" class="form-control ho_chua_be_rong_dap">
+                          </div>
+                          <div class="col-md-4">
+                            <label>Chiều cao đập
+                            </label>
+                            <input type="number" class="form-control ho_chua_chieu_cao_dap">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-4">
+                            <label>Độ dốc mái thượng lưu
+
+                            </label>
+                            <input type="number" class="form-control ho_chua_doc_mai_thuong_luu">
+                          </div>
+                          <div class="col-md-4">
+                            <label>Độ dốc mái hạ lưu
+
+                            </label>
+                            <input type="number" class="form-control ho_chua_doc_mai_ha_luu">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane fade" id="ho_chua_thong_so_thiet_ke_tran" role="tabpanel"
+                        aria-labelledby="contact-tab">
+                        <div class="row">
+                          <div class="col-md-4">
+                            <label>Bề rộng tràn
+
+
+                            </label>
+                            <input type="number" class="form-control ho_chua_be_rong_tran">
+                          </div>
+                          <div class="col-md-4">
+                            <label>Cao trình ngưỡng tràn
+
+
+                            </label>
+                            <input type="number" class="form-control ho_chua_cao_trinh_nguong_tran">
+                          </div>
+                          <div class="col-md-4">
+                            <label>Q tràn
+
+
+
+                            </label>
+                            <input type="number" class="form-control ho_chua_q_tran">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane fade" id="ho_chua_thong_so_cong_lay_tu_dap" role="tabpanel"
+                        aria-labelledby="contact-tab">
+                        <div class="row">
+                          <div class="col-md-3">
+                            <label>loại cống
+                            </label>
+                            <input type="text" class="form-control ho_chua_loai_cong">
+                          </div>
+                          <div class="col-md-3">
+                            <label>Khẩu độ cống
+
+
+
+                            </label>
+                            <input type="number" class="form-control ho_chua_khau_do_cong">
+                          </div>
+                          <div class="col-md-3">
+                            <label>Chiều dài cống
+
+
+
+
+                            </label>
+                            <input type="number" class="form-control ho_chua_chieu_dai_cong">
+                          </div>
+                          <div class="col-md-3">
+                            <label>Cao trình ngưỡng cống
+
+
+
+
+                            </label>
+                            <input type="number" class="form-control ho_chua_cao_trinh_nguong_cong">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane fade" id="ho_chua_nha_quan_ly" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="row">
+                          <div class="col-md-4">
+                            <label>Loại nhà
+
+                            </label>
+                            <input type="text" class="form-control ho_chua_loai_nha">
+                          </div>
+                          <div class="col-md-4">
+                            <label>Diện tích
+
+                            </label>
+                            <input type="number" class="form-control ho_chua_dien_tich">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane fade" id="ho_chua_duong_van_hanh" role="tabpanel"
+                        aria-labelledby="contact-tab">
+                        <div class="row">
+                          <div class="col-md-4">
+                            <label>Chất liệu
+
+                            </label>
+                            <input type="text" class="form-control ho_chua_chat_lieu">
+                          </div>
+                          <div class="col-md-4">
+                            <label>chiều dài (m)
+
+
+                            </label>
+                            <input type="number" class="form-control ho_chua_chieu_dai">
+                          </div>
+                          <div class="col-md-4">
+                            <label>chiều rộng (m)
+
+
+                            </label>
+                            <input type="number" class="form-control ho_chua_chieu_rong">
+                          </div>
+                        </div>
+                      </div>
+                    </div><!-- End Bordered Tabs Justified -->
+
+
+                  </div>
+                </div>
+              </div>
+              <!--Hồ chứa -->
+              <!-- khu tưới-->
+              <div class="khu_tuoi is-hidden row">
+                <div class="col-md-6">
+                  <label>Tên Khu Tưới</label>
+                  <input type="text" class="form-control khu_tuoi_ten">
+                </div>
+                <div class="col-md-6">
+                  <label>Nguồn nước</label>
+                  <input type="text" class="form-control khu_tuoi_nguon_nuoc">
+                </div>
+                <div class="col-md-6">
+                  <label>Diện tích khu tưới(m<sup>2</sup>)
+                  </label>
+                  <input type="number" class="form-control khu_tuoi_dien_tich_khu_tuoi">
+                </div>
+                <div class="col-md-6">
+                  <label>Diện tích đất nông nghiệp(m<sup>2</sup>)
+                  </label>
+                  <input type="number" class="form-control khu_tuoi_dien_tich_dat_nong_nghiep">
+                </div>
+                <div class="col-md-6">
+                  <label>DT đất công nghiệp(m<sup>2</sup>)
+                  </label>
+
+                  <input type="number" class="form-control khu_tuoi_dien_tich_dat_cong_nghiep">
+                </div>
+                <div class="col-md-6">
+                  <label>DT nuôi trồng thủy sản(m<sup>2</sup>)
+                  </label>
+                  <input type="number" class="form-control khu_tuoi_dien_tich_dat_nuoi_trong_thuy_san">
+                </div>
+                <div class="col-md-6">
+                  <label>Tồng chiều dài kênh cấp 1(m)
+                  </label>
+                  <input type="number" class="form-control khu_tuoi_tong_chieu_dai_kenh_cap_1">
+                </div>
+                <div class="col-md-6">
+                  <label>Tổng chiều dài kênh cấp 2(m)
+                  </label>
+                  <input type="number" class="form-control khu_tuoi_tong_chieu_dai_kenh_cap_2">
+                </div>
+              </div>
+              <!-- kết thúc form khu tuoi-->
+              <!-- Kênh dẫn-->
+              <div class="kenh_dan is-hidden row">
+                <div class="col-md-6">
+                  <label>Tên Kênh
+                  </label>
+                  <input type="text" class="form-control kenh_dan_ten">
+                </div>
+                <div class="col-md-6">
+                  <label>Thuộc hồ chứa nước
+                  </label>
+
+                  <input type="text" class="form-control kenh_dan_ho_chua">
+                </div>
+                <div class="col-md-6">
+                  <label>Cấp kênh
+                  </label>
+                  <input type="number" class="form-control kenh_dan_cap_kenh">
+                </div>
+                <div class="col-md-6">
+                  <label>Loại kênh
+                  </label>
+                  <input type="text" class="form-control kenh_dan_loai_kenh">
+                </div>
+                <div class="col-md-6">
+                  <label>Chiều dài(m)
+                  </label>
+                  <input type="text" class="form-control kenh_dan_chieu_dai">
+                </div>
+                <div class="col-md-6">
+                  <label>Năm xây dựng
+                  </label>
+                  <input type="number" class="form-control kenh_dan_nam_xay_dung">
+                </div>
+                <div class="col-md-6">
+                  <label>Phạm vi tưới
+                  </label>
+                  <input type="text" class="form-control kenh_dan_pham_vi_tuoi">
+                </div>
+              </div>
+              <!-- vị trị sạt lở-->
+              <div class="vi_tri_sat_lo row is-hidden">
+                <div class="col-md-12">
+                  <label>Công trình</label>
+                  <input type="text" class="form-control vi_tri_sat_lo_cong_trinh">
+                </div>
+                <div class="col-md-6">
+                  <label>Chiều dài(m)</label>
+                  <input type="number" class="form-control vi_tri_sat_lo_chieu_dai">
+                </div>
+                <div class="col-md-6">
+                  <label>Chiều rộng (m)</label>
+                  <input type="number" class="form-control vi_tri_sat_lo_chieu_rong">
+                </div>
+
+
+                <div class="col-md-12">
+                  <label>Đánh giá mức độ nguy hiểm
+                  </label>
+                  <textarea class="form-control vi_tri_sat_lo_muc_do_nguy_hiem"></textarea>
+                </div>
+
+              </div>
+              <!-- kết thúc vị trị sạt lở-->
+
+              <!-- cong tren kenh-->
+              <div class="cong_tren_kenh is-hidden row">
+                <div class="col-md-6">
+                  <label>Tên Cống
+                  </label>
+                  <input type="text" class="form-control namecong">
+                </div>
+                <div class="col-md-6">
+                  <label>Khẩu độ</label>
+                  <input type="text" class="form-control khaudocong">
+                </div>
+                <div class="col-md-6">
+                  <label>Loại cống
+                  </label>
+                  <input type="text" class="form-control loaicong">
+                </div>
+                <div class="col-md-6">
+                  <label>Năm xây dựng
+                  </label>
+                  <input type="number" class="form-control namxdcong">
+                </div>
+                <div class="col-md-6">
+                  <label>DT đất công nghiệp(m<sup>2</sup>)
+                  </label>
+                  <input type="number" class="form-control dtdatcongnghiepcong">
+                </div>
+                <div class="col-md-6">
+                  <label>Cao trình đáy
+                  </label>
+                  <input type="number" class="form-control caotrinhdaycong">
+                </div>
+                <div class="col-md-6">
+                  <label>Thuộc kênh dẫn
+                  </label>
+                  <input type="text" class="form-control kenhdancong">
+                </div>
+              </div>
+              <!-- kết thúc form cong tren kenh-->
+              <!-- mãu đất-->
+              <div class="mau_dat is-hidden row">
+
+                <div class="col-md-12">
+                  <label>Dự án</label>
+                  <input type="text" class="form-control mau_dat_du_an">
+                </div>
+
+
+                <div class="col-md-6">
+                  <label>Ký hiệu mẫu</label>
+                  <input type="text" class="form-control mau_dat_ky_hieu_mau">
+                </div>
+                <div class="col-md-6">
+                  <label>Người lấy mẫu</label>
+                  <input type="text" class="form-control mau_dat_nguoi_lay_mau">
+                </div>
+                <div class="col-md-6">
+                  <label>Số chỉ tiêu</label>
+                  <input type="number" class="form-control mau_dat_so_chi_tieu">
+                </div>
+                <div class="col-md-6">
+                  <label>Ngày lấy mẫu</label>
+                  <input type="date" class="form-control mau_dat_ngay_lay_mau">
+                </div>
+              </div>
+              <!-- kết thúc form mẫu đất-->
+              <!-- mãu nuoc-->
+              <div class="mau_nuoc is-hidden row">
+                <div class="col-md-12">
+                  <label>Dự án</label>
+                  <input type="text" class="form-control mau_nuoc_du_an">
+                </div>
+                <div class="col-md-6">
+                  <label>Ký hiệu mẫu</label>
+                  <input type="text" class="form-control mau_nuoc_ky_hieu_mau">
+                </div>
+                <div class="col-md-6">
+                  <label>Người lấy mẫu</label>
+                  <input type="text" class="form-control mau_nuoc_nguoi_lay_mau">
+                </div>
+                <div class="col-md-6">
+                  <label>Số chỉ tiêu</label>
+                  <input type="number" class="form-control mau_nuoc_so_chi_tieu">
+                </div>
+                <div class="col-md-6">
+                  <label>Ngày lấy mẫu</label>
+                  <input type="date" class="form-control mau_nuoc_ngay_lay_mau">
+                </div>
+              </div>
+              <!-- kết thúc form mẫu nuoc-->
+              <div class="addfooter is-hidden row">
+
+                <div class="col-md-12">
+                  <label>Tọa độ</label>
+
+                  <textarea class="form-control toadochung"></textarea>
+                </div>
+
+
+
+                <div class="col-md-8">
+                  <div class="iconimage">
+                    <input id="imgiconarea" class="imghhhh" style="display:none" type="file" accept=".png, .jpg, .jpeg">
+                    <a href="#">
+                      <label for="imgiconarea" class="custom-file-upload" id="imgiconarea">
+                        <img width="25px" style="border:0px" src="images/iconuploadimage.png">Chọn
+                        hình ảnh</label>
+                    </a>
+                  </div>
+                  <label class="progresscommon col-sm-2"> </label>
+                </div>
+
+
+                <div class="col-md-12">
+                  <table>
+                    <tbody class="showlinkurl"></tbody>
+
+                  </table>
+                </div>
+
+              </div>
+
+            </div>
+            <div class="modal-footer">
+            
+              <button type="button" class="btn btn-danger btnluu"><i class="fa fa-save" aria-hidden="true"></i>
+                &nbsp; Lưu</button>
+
+              <button type="button" class="btn btn-danger  btnexit"><i class="fa fa-window-close"
+                  aria-hidden="true"></i>
+                &nbsp; Đóng</button>
+            </div>
+          </div>
+        </div>
+      </div><!-- End Large Modal-->
+      <!-- Modal -->
+      <div class="modal fade viewinforedit" id="ExtralargeModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp;
+                Cập nhật thông tin:<b class="addtitleviewedit"></b></h4>
+              <button type="button" class="btn btn-danger btneupdateview" data-dismiss="modal"><i
+                class="fa fa-edit" aria-hidden="true"></i>
+              &nbsp; Thay đổi</button>
+             
+             
+            </div>
+            
+            <div class="modal-body">
+              <div class="col-lg-12">
+                <div class="card">
+                  <div class="card-body">
+                    <table class="table">
+                    
+                      <tr><td><b>Tỉnh/Thành Phố:</b></td><td><select class="form-control cbprovinceedit"><option value="NULL">Chọn tỉnh/TP</option><option value="01">Thành phố Hà Nội</option><option value="02">Tỉnh Hà Giang</option><option value="04">Tỉnh Cao Bằng</option><option value="06">Tỉnh Bắc Kạn</option><option value="08">Tỉnh Tuyên Quang</option><option value="10">Tỉnh Lào Cai</option><option value="11">Tỉnh Điện Biên</option><option value="12">Tỉnh Lai Châu</option><option value="14">Tỉnh Sơn La</option><option value="15">Tỉnh Yên Bái</option><option value="17">Tỉnh Hoà Bình</option><option value="19">Tỉnh Thái Nguyên</option><option value="20">Tỉnh Lạng Sơn</option><option value="22">Tỉnh Quảng Ninh</option><option value="24">Tỉnh Bắc Giang</option><option value="25">Tỉnh Phú Thọ</option><option value="26">Tỉnh Vĩnh Phúc</option><option value="27">Tỉnh Bắc Ninh</option><option value="30">Tỉnh Hải Dương</option><option value="31">Thành phố Hải Phòng</option><option value="33">Tỉnh Hưng Yên</option><option value="34">Tỉnh Thái Bình</option><option value="35">Tỉnh Hà Nam</option><option value="36">Tỉnh Nam Định</option><option value="37">Tỉnh Ninh Bình</option><option value="38">Tỉnh Thanh Hóa</option><option value="40">Tỉnh Nghệ An</option><option value="42">Tỉnh Hà Tĩnh</option><option value="44">Tỉnh Quảng Bình</option><option value="45">Tỉnh Quảng Trị</option><option value="46">Tỉnh Thừa Thiên Huế</option><option value="48">Thành phố Đà Nẵng</option><option value="49">Tỉnh Quảng Nam</option><option value="51">Tỉnh Quảng Ngãi</option><option value="52">Tỉnh Bình Định</option><option value="54">Tỉnh Phú Yên</option><option value="56">Tỉnh Khánh Hòa</option><option value="58">Tỉnh Ninh Thuận</option><option value="60">Tỉnh Bình Thuận</option><option value="62">Tỉnh Kon Tum</option><option value="64">Tỉnh Gia Lai</option><option value="66">Tỉnh Đắk Lắk</option><option value="67">Tỉnh Đắk Nông</option><option value="68">Tỉnh Lâm Đồng</option><option value="70">Tỉnh Bình Phước</option><option value="72">Tỉnh Tây Ninh</option><option value="74">Tỉnh Bình Dương</option><option value="75">Tỉnh Đồng Nai</option><option value="77">Tỉnh Bà Rịa - Vũng Tàu</option><option value="79">Thành phố Hồ Chí Minh</option><option value="80">Tỉnh Long An</option><option value="82">Tỉnh Tiền Giang</option><option value="83">Tỉnh Bến Tre</option><option value="84">Tỉnh Trà Vinh</option><option value="86">Tỉnh Vĩnh Long</option><option value="87">Tỉnh Đồng Tháp</option><option value="89">Tỉnh An Giang</option><option value="91">Tỉnh Kiên Giang</option><option value="92">Thành phố Cần Thơ</option><option value="93">Tỉnh Hậu Giang</option><option value="94">Tỉnh Sóc Trăng</option><option value="95">Tỉnh Bạc Liêu</option><option value="96">Tỉnh Cà Mau</option></select></td>
+                        <td><b>Quận/huyện:</b></td><td><select class="form-control cbdistrictedit"></select></td>
+                        <td><b>Phường Xã:</b></td><td><select class="form-control cbwardsedit"></select></td>
+                      </tr>
+                    <tr>
+                      <td>Địa chỉ:</td><td colspan="5"><input class="form-control addresschungedit" type="text"/></td>
+                    </tr>
+                   
+                    </table>  
+                </div>
+                  <div class="card-body show">
+                  
+                    <ul class="nav nav-tabs nav-tabs-bordered d-flex" id="borderedTabJustifiedContent1" role="tablist">
+                      <li class="nav-item flex-fill" role="presentation">
+                        <button class="nav-link w-100 active" id="home-tab1" data-bs-toggle="tab"
+                          data-bs-target="#add_infor_edit" type="button" role="tab" aria-controls="homeview"
+                          aria-selected="true" tabindex="-1">Thông tin</button>
+                      </li>
+                      <li class="nav-item flex-fill" role="presentation">
+                        <button class="nav-link w-100" id="profile-tab1" data-bs-toggle="tab"
+                          data-bs-target="#add_image_edit" type="button" role="tab" aria-controls="profileview"
+                          aria-selected="false">Hình ảnh</button>
+                      </li>
+
+                    </ul>
+                    <div class="tab-content pt-2" id="borderedTabJustifiedContent1">
+                      <div class="tab-pane fade table-responsive active show" id="add_infor_edit" role="tabpanel"
+                        aria-labelledby="home-tab1">
+                        <table class="table">
+                          <tbody class="addShowDataEdit">
+
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="tab-pane fade " id="add_image_edit" role="tabpanel"
+                        aria-labelledby="profile-tab1">
+                        <div class="col-md-12">
+                          <div class="iconimage">
+                            <input id="imgiconareaedit" class="imghhhh" style="display:none" type="file" accept=".png, .jpg, .jpeg">
+                            <a href="#">
+                              <label for="imgiconareaedit" class="custom-file-upload" id="imgiconareaedit">
+                                <img width="25px" style="border:0px" src="images/iconuploadimage.png">Chọn
+                                hình ảnh</label>
+                            </a>
+                          </div>
+                          <label class="progresscommon col-sm-2"></label>
+                        </div>
+                        <div class="col-md-12">
+                          <table>
+                            <tbody class="showlinkurl_edit">
+                            
+                          </table>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+
+
+
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger btneupdateview" data-dismiss="modal"><i
+                class="fa fa-edit" aria-hidden="true"></i>
+              &nbsp; Thay đổi</button>
+             
+              <button type="button" class="btn btn-danger btncloseeditview" data-dismiss="modal"><i
+                  class="fa fa-window-close" aria-hidden="true"></i>
+                &nbsp; Đóng</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- Modal -->
+      <div class="modal fade viewinfor" id="ExtralargeModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp;
+                <b class="addtitleview">Xem thông tin</b></h4>
+            </div>
+            <div class="modal-body">
+              <div class="col-lg-12">
+                <div class="card">
+                  <div class="card-body show">
+                  
+                    <ul class="nav nav-tabs nav-tabs-bordered d-flex" id="borderedTabJustifiedContent1" role="tablist">
+                      <li class="nav-item flex-fill" role="presentation">
+                        <button class="nav-link w-100 active" id="home-tab1" data-bs-toggle="tab"
+                          data-bs-target="#add_infor" type="button" role="tab" aria-controls="homeview"
+                          aria-selected="true" tabindex="-1">Thông tin</button>
+                      </li>
+                      <li class="nav-item flex-fill" role="presentation">
+                        <button class="nav-link w-100" id="profile-tab1" data-bs-toggle="tab"
+                          data-bs-target="#add_image" type="button" role="tab" aria-controls="profileview"
+                          aria-selected="false">Hình ảnh</button>
+                      </li>
+
+                    </ul>
+                    <div class="tab-content pt-2" id="borderedTabJustifiedContent1">
+                      <div class="tab-pane fade table-responsive active show" id="add_infor" role="tabpanel"
+                        aria-labelledby="home-tab1">
+                        <table class="table">
+                          <tbody class="addShowData">
+
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="tab-pane fade " id="add_image" role="tabpanel"
+                        aria-labelledby="profile-tab1">
+                         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                         <!--
+                          <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3" class="active" aria-current="true"></button>
+                          </div>
+                          <div class="carousel-inner">
+                            <div class="carousel-item">
+                              <img src="assets/img/slides-1.jpg" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                              <img src="assets/img/slides-2.jpg" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item active">
+                              <img src="assets/img/slides-3.jpg" class="d-block w-100" alt="...">
+                            </div>
+                          </div>
+          
+                          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                          </button>
+                          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                          </button>
+                        -->
+                        </div> 
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+
+
+
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger btneditview" data-dismiss="modal"><i
+                class="fa fa-edit" aria-hidden="true"></i>
+              &nbsp; Sửa</button>
+              <button type="button" class="btn btn-danger btndelview" data-dismiss="modal"><i
+                class="fa fa-remove" aria-hidden="true"></i>
+              &nbsp; Xóa</button>
+
+              <button type="button" class="btn btn-danger btncloseview" data-dismiss="modal"><i
+                  class="fa fa-window-close" aria-hidden="true"></i>
+                &nbsp; Đóng</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- modal doi mat khau -->
+      <div class="modal fade showmodalchangematkhau" id="modal-default">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Thay đổi mật khẩu</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="card">
+                <div class="card-body login-card-body">
+
+
+                  <div class="input-group mb-3">
+                    <input type="password" class="form-control txtpassnew" placeholder="Mật khẩu mới">
+                    <div class="input-group-append">
+                      <div class="input-group-text">
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="input-group mb-3">
+                    <input type="password" class="form-control txtpassnewagain" placeholder="Nhập lại mật khẩu mới">
+                    <div class="input-group-append">
+                      <div class="input-group-text">
+
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary btn_change_pass">Thay đổi</button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <!-- kết thúc modal đổi mật khẩu -->
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>Phòng Khoa Học Và Đối Ngoại</span></strong>. All Rights Reserved
+    </div>
+    <!-- <div class="credits">
+     Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+    </div> -->
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+  <script src="plug-in/js/all.min.js"></script>
+  <script src="plug-in/bootbox/bootbox.js"></script>
+  <script src="plug-in/bootbox/bootbox.min.js"></script>
+
+  <script src="plugins/jquery/jquery.min.js"></script>
+
+  <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   -->
+  <script src="leaflet/leaflet.js"></script>
+  <script src="leaflet/easy-button.js"></script>
+  <script src="js/bootbox.min.js"></script>
+  <script src="demo/leaflet-geoman.min.js"></script>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    function loadJS(FILE_URL, async = true) {
+      let scriptEle = document.createElement("script");
+
+      scriptEle.setAttribute("src", FILE_URL);
+      scriptEle.setAttribute("type", "text/javascript");
+      scriptEle.setAttribute("async", async);
+
+      document.body.appendChild(scriptEle);
+
+      // success event 
+      scriptEle.addEventListener("load", () => {
+        //console.log("File loaded")
+      });
+      // error event
+      scriptEle.addEventListener("error", (ev) => {
+        console.log("Error on loading file", ev);
+      });
+    }
+    //$(document).ready(function () {
+    const d = new Date();
+    let time = d.getTime();
+    loadJS("js/common.js?v=" + time, false);
+    loadJS("demo/demo.js?v=" + time, false);
+    loadJS("js/xulyshowmenumap.js?v=" + time, false);
+    loadJS("js/xulydata.js?v=" + time, false);
+    loadJS("js/search_data.js?v=" + time, false);
+  //});
+  </script>
+
+</body>
+
+</html>

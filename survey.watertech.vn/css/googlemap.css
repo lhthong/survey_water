@@ -1,0 +1,51 @@
+#card {
+    position: relative;
+}
+
+button.btn {
+    position: absolute;
+    font-size: 1.8rem;
+    outline: none;
+    display: inline-block;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+    background-color: #ffffff;
+    padding: 8px 15px;
+    justify-content: center;
+    left: 1045px
+}
+.custom{
+    width: 50px !important;
+}
+.btn:hover {
+    opacity: 0.8;
+}
+
+.btn--a{
+    margin: 0 0 0 0;
+}
+.btn--b{
+    margin-top: 20px;
+    
+}
+.btn--c{
+    margin-top: 55px;
+
+}
+.btn--d{
+    margin-top: 130px;
+    
+}
+.btn--e{
+    margin-top: 165px;
+    
+}
+.btn--f{
+    margin-top: 200px;
+    
+}
+.btn--g{
+    margin-top: 235px;
+    
+}
+

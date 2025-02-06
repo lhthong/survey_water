@@ -1,0 +1,107 @@
+
+.marker-menu-btn {
+  background-color: #4CAF50;
+  /* Màu nền */
+  border: none;
+  /* Không có đường viền */
+  color: white;
+  /* Màu chữ */
+  padding: 10px 20px;
+  /* Kích thước */
+  text-align: center;
+  /* Canh giữa nội dung */
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+  /* Thay đổi hình dạng con trỏ khi hover */
+  border-radius: 4px;
+  /* Bo tròn góc */
+}
+
+.image-upload-popup {
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 300px;
+  margin-left: 10px;
+}
+
+.leaflet-popup-content {
+  margin: 13px 24px 13px 20px;
+  height: 150%;
+  width: 150%;
+  font-size: 13px;
+  font-size: 1.08333em;
+  /* min-height: 1px; */
+  
+}
+
+
+.data-popup {
+  width: 1000px;
+}
+
+.add-image {
+    background-color: #008CBA; /* Màu nền */
+    color: white; /* Màu chữ */
+    border: none; /* Không viền */
+    padding: 10px 10px; /* Kích thước */
+    text-align: center; /* Căn giữa */
+    text-decoration: none; /* Không gạch chân */
+    display: inline-block; /* Hiển thị dạng block */
+    font-size: 16px; /* Cỡ chữ */
+    margin: 4px 2px; /* Khoảng cách với các phần tử khác */
+    cursor: pointer; /* Hiển thị con trỏ tay */
+}
+
+.add-data {
+    background-color: #008CBA; /* Màu nền */
+    color: white; /* Màu chữ */
+    border: none; /* Không viền */
+    padding: 10px 10px; /* Kích thước */
+    text-align: center; /* Căn giữa */
+    text-decoration: none; /* Không gạch chân */
+    display: inline-block; /* Hiển thị dạng block */
+    font-size: 16px; /* Cỡ chữ */
+    margin: 4px 2px; /* Khoảng cách với các phần tử khác */
+    cursor: pointer; /* Hiển thị con trỏ tay */
+}
+.show-data {
+  background-color: #4CAF50; /* Màu nền */
+  color: white; /* Màu chữ */
+  border: none; /* Không viền */
+  padding: 10px 10px; /* Kích thước */
+  text-align: center; /* Căn giữa */
+  text-decoration: none; /* Không gạch chân */
+  display: inline-block; /* Hiển thị dạng block */
+  font-size: 16px; /* Cỡ chữ */
+  margin: 4px 2px; /* Khoảng cách với các phần tử khác */
+  cursor: pointer; /* Hiển thị con trỏ tay */
+}
+/* CSS cho imagePopupContent */
+.image-popup-content {
+  width: 300px !important;
+  height: 170px !important;
+}
+
+/* CSS cho generalPopupContent */
+.general-popup-content {
+ 
+  margin: 13px 24px 13px 20px;
+  height: 150%;
+  width: 150%;
+  font-size: 13px;
+  font-size: 1.08333em;
+  /* min-height: 1px; */
+}
+
+.custom-icon {
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 30px;
+  font-size: 16px;
+  color: #000;
+}

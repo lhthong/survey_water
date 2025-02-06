@@ -1,0 +1,22 @@
+#paging ul{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+#paging .paginationjs-page, .paginationjs-ellipsis, .paginationjs-prev, .paginationjs-next{
+    --height: 30px;
+    min-width: 30px;
+    height: var(--height);
+    line-height: var(--height);
+    border: 1px solid rgba(66, 71, 71, 0.096);
+    text-align: center;
+    border-radius: 2px;
+    margin: 0 4px;
+}
+
+#paging .active{
+    background: rgb(2, 143, 251);
+    color: white;
+}

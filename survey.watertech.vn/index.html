@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin</title>
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+  <style>
+    .is-hidden {
+      display: none;
+    }
+
+    .video_div {
+      margin-left: -210px;
+    }
+
+    @media (max-width:1199px) {
+      .video_div {
+        margin-left: -270px;
+      }
+    }
+  </style>
+
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+  <div class="wrapper">
+
+    <!-- Preloader -->
+    <div class="preloader flex-column justify-content-center align-items-center">
+      <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    </div>
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+
+      </ul>
+
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+
+
+
+
+        <li class="nav-item">
+          <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+            <i class="fas fa-expand-arrows-alt"></i>
+          </a>
+        </li>
+
+      </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <!-- Brand Logo -->
+      <a href="index3.html" class="brand-link">
+        <img src="images/logo.png" alt="logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">Survey</span>
+      </a>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+            <img src="images/avatar.png" class="img-circle elevation-2 addvartar" alt="avartar">
+          </div>
+          <div class="info">
+            <a href="#" class="d-block addusername">Viên Thanh Nhã</a>
+          </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>
+                  Tác nghiệp
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item menupc">
+                  <a class="nav-link">
+                    &nbsp;&nbsp;&nbsp;<i class="fas fa-arrow-circle-right"></i>
+                    <p>Phân công thu thập</p>
+                  </a>
+                </li>
+
+                
+               
+              </ul>
+            </li>
+            <li class="nav-item itemdanhmuc">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>
+                  Thiết lập
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item menuda">
+                  <a class="nav-link">
+                    &nbsp;&nbsp;&nbsp;<i class="fas fa-arrow-circle-right"></i>
+                    <p>&nbsp;Dự án</p>
+                  </a>
+                </li>
+				<li class="nav-item menuarea">
+                  <a class="nav-link">
+                    &nbsp;&nbsp;&nbsp; <i class="fas fa-arrow-circle-right"></i>
+                    <p>Các lĩnh vực</p>
+                  </a>
+                </li>
+                <li class="nav-item menuusers">
+                  <a class="nav-link">
+                    &nbsp;&nbsp;&nbsp;<i class="fas fa-arrow-circle-right"></i>
+                    <p>&nbsp;Thành viên</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right addbreadcrumb">
+
+              </ol>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+
+      <!-- Main content -->
+      <section class="content">
+
+        <div class="container-fluid">
+          <div class="frmduan is-hidden">
+            <div class="row card ">
+              <div class="card-header bg-danger">
+                <h3 class="card-title">
+                  <i class="far fa-star mr-1"></i>
+                  Thông tin các dự án
+                </h3>
+              </div>
+              <div class="card-body">
+                <div class="tab-content p-0">
+                  <div class="card card-info">
+                    <form class="form-horizontal">
+                      <div class="card-body">
+                        <div class="form-group row">
+                          <label class="col-sm-2 col-form-label">Mã Dự Án </label>
+                          <div class=" col-sm-4">
+                            <input type="text" class="form-control txtmada" maxlength="6" placeholder="Mã dự án">
+                          </div>
+						   <label for="inputPassword3" class="col-sm-2 col-form-label ">Tên dự án</label>
+                          <div class="col-sm-4">
+                            <input type="text" class="form-control txttenda" placeholder="Tên dự án">
+                          </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                          <label for="inputEmail3" class="col-sm-2 ">Ngày bắt đầu dự án</label>
+                          <div class="col-sm-4">
+                            <input type="date" class="form-control startpro" placeholder="">
+                          </div>
+							<label for="inputEmail3" class="col-sm-2 ">Ngày kết thúc dự án</label>
+                          <div class="col-sm-4">
+                            <input type="date" class="form-control endpro" placeholder="">
+                          </div>
+                        </div>
+                        
+                      </div>
+                      <div class="card-footer">
+                        <button type="button" class="btn btn-info btnthemda"><i
+                            class="far fa-plus-square"></i>&nbsp;Thêm</button>&nbsp;<button type="button"
+                          class="btn btn-info btnluuda"><i class="fa fa-floppy-o" aria-hidden="true"></i>
+                          &nbsp;Lưu</button>&nbsp;<button type="button"
+                          class="btn btn-info btnxoada"><i class="fa fa-trash" aria-hidden="true"></i>
+                          &nbsp;Xóa</button>&nbsp;<button type="button"
+                          class="btn btn-info btnsuada"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+
+                          &nbsp;Sửa</button>
+                        <button type="button" class="btn btn-default float-right btnlamlaida"><i class="fa fa-refresh" aria-hidden="true"></i>
+&nbsp;                          Làm lại</button>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="card">
+                    <div class="card-header">
+                      <div class="input-group input-group-sm">
+                        <input type="text" class="form-control txtfindda"
+                          placeholder='Gõ nội dung và nhấn Enter hoặc nút Tìm '>
+                        <span class="input-group-append">
+                          <button type="button" class="btn btn-info btn-flat btnfindda"><i class="fa fa-search" aria-hidden="true"></i>
+&nbsp;                            Tìm</button>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="card-header bg-danger">
+                      <h3 class="card-title ">Các dự án hiện có:</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body p-0 table-reponsive">
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th style="width: 10px">#</th>
+                            <th>Mã dự án</th>
+                            <th>Tên dự án</th>
+                            <th>Bắt đầu</th>
+                            <th>Kết thúc</th>
+                            <th style="width: 100px">Thao tác</th>
+                          </tr>
+                        </thead>
+                        <tbody class="addListDA">
+
+                        </tbody>
+
+                      </table>
+                    </div>
+                    <div class="numberpageda"></div>
+
+                    <!-- /.card-body -->
+                  </div>
+                </div>
+              </div><!-- /.card-body -->
+
+            </div>
+          </div>
+          <div class="row frmusers card is-hidden">
+            <div class="card-header bg-danger">
+              <h3 class="card-title">
+                <i class="far fa-star mr-1"></i>
+                Thông tin thành viên
+              </h3>
+            </div>
+            <div class="card-body">
+              <div class="tab-content p-0">
+                <div class="card card-info">
+                  <form class="form-horizontal">
+                    <div class="card-body">
+                      <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">UserName(*)</label>
+                        <div class=" col-sm-4">
+                          <input type="hidden" class="form-control txtiduser" placeholder="">
+                          <input type="text" class="form-control txtusername" placeholder="">
+                        </div>
+						<label for="inputPassword3" class="col-sm-2 col-form-label ">Họ và tên(*)</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control txtfullname" placeholder="">
+                        </div>
+                      </div>
+                    
+                      <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Giới tính</label>
+                        <div class=" col-sm-4">
+                          <select class="cbgender form-control">
+                            <option value="1">Nam</option>
+                            <option value="0">Nữ</option>
+                          </select>
+                        </div>
+						 <label for="inputPassword3" class="col-sm-2 col-form-label ">Điện thoại</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control txtphone" placeholder="">
+                        </div>
+                      </div>
+                     
+                      <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label ">Địa chỉ</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control txtaddress" placeholder="">
+                        </div>
+						<label class="col-sm-2 col-form-label">Quyền(*)</label>
+                        <div class=" col-sm-4">
+                          <select class="cbidquyen form-control">
+                            <option value="2">Quyền thu thập</option>
+                            <option value="1">Quyền biên tập</option>
+                            <option value="0">Quyền quản trị</option>
+                          </select>
+                        </div>
+                      </div>
+                     
+                      <div class="card-footer">
+                        <button type="button" class="btn btn-info btnthemuser"><i
+                            class="far fa-plus-square"></i>&nbsp;Thêm</button>&nbsp;<button type="button"
+                          class="btn btn-info btnluuuser"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Lưu</button>&nbsp;<button type="button"
+                          class="btn btn-info btnxoauser"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Xóa</button>&nbsp;<button type="button"
+                          class="btn btn-info btnsuauser"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Sửa</button>
+                        <button type="button" class="btn btn-default float-right btnlamlaiuser"><i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Làm lại</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="card">
+                  <div class="card-header">
+                    <div class="input-group input-group-sm">
+                      <input type="text" class="form-control txtfinduser"
+                        placeholder='Gõ nội dung và nhấn Enter hoặc nút Tìm '>
+                      <span class="input-group-append">
+                        <button type="button" class="btn btn-info btn-flat btnfinduser"><i class="fa fa-search" aria-hidden="true"></i>
+                          &nbsp;Tìm</button>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="card-header bg-danger">
+                    <h3 class="card-title">Các thành viên hiện có:</h3>
+                  </div>
+                  <div class="card-body p-0 table-reponsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th style="width: 10px">#</th>
+                          <th>Tên đăng nhập</th>
+                          <th>Họ và tên</th>
+                          <th>Giới tính</th>
+                          <th>Điện thoại</th>
+                          <th>Địa chỉ</th>
+                          <th>Quyền</th>
+                          <th style="width: 100px">Thao tác</th>
+                        </tr>
+                      </thead>
+                      <tbody class="addListUSER">
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="numberpageuser"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- phan cong-->
+          <div class="row frmajoinpro is-hidden">
+            <div class="col-lg-12 col-12">
+              <div class="card card-info">
+                <div class="card-header bg-danger">
+                  <h3 class="card-title"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Phân công thành viên tham gia khảo sát và thu thập dữ liệu </h3>
+                </div>
+               
+                  <div class="card-body">
+                    <div class="form-group row">
+                      <label for="inputEmail3" class="col-sm-2 ">Chọn Dự án(*):</label>
+                      <div class="col-sm-4">
+                        <select class="form-control cbprojoin">
+                          <option value="NULL">Chọn dự án</option>
+                                    </select>
+                      </div>
+                      <label for="inputEmail3" class="col-sm-2 ">Chọn Lĩnh Vực(*)</label>
+                      <div class="col-sm-4 ">
+                        <select class="form-control cbareajoin">
+                          <option value="NULL">Chọn lĩnh vực</option>
+                                    </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="inputEmail3" class="col-sm-2 ">Ngày bắt đầu(*):</label>
+                      <div class="col-sm-4">
+                        <input type="date" class="form-control startjoin" placeholder="">
+                      </div>
+                      <label for="inputEmail3" class="col-sm-2 ">Ngày kết thúc(*)</label>
+                      <div class="col-sm-4">
+                        <input type="date" class="form-control endjoin" placeholder="">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="inputPassword3" class="col-sm-2 col-form-label">Thành viên(*)</label>
+                      <div class="col-sm-4">
+                        <select class="form-control cbuserjoin">
+							            <option value="NULL">Chọn thành viên</option>
+                        </select>
+                      </div>
+                     
+                      
+                    </div>
+
+
+                  </div>
+
+                 <div class="card-footer">
+                        <button type="button" class="btn btn-info btnthemjoin"><i
+                            class="far fa-plus-square"></i>&nbsp;Thêm</button>&nbsp;<button type="button"
+                          class="btn btn-info btnluujoin"><i class="fa fa-floppy-o" aria-hidden="true"></i>
+                          &nbsp;Lưu</button>&nbsp;<button type="button"
+                          class="btn btn-info btnxoajoin"><i class="fa fa-trash" aria-hidden="true"></i>
+                          &nbsp;Xóa</button>&nbsp;<button type="button"
+                          class="btn btn-info btnsuajoin"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+
+                          &nbsp;Sửa</button>
+                        <button type="button" class="btn btn-default float-right btnlamlaijoin"><i class="fa fa-refresh" aria-hidden="true"></i>
+&nbsp;                          Làm lại</button>
+                      </div>
+<div class="card">
+                  <div class="card-header">
+                    <div class="input-group input-group-sm">
+                      <input type="text" class="form-control txtfindjoin"
+                        placeholder='Gõ nội dung và nhấn Enter hoặc nút Tìm '>
+                      <span class="input-group-append">
+                        <button type="button" class="btn btn-info btn-flat btnfindjoin"><i class="fa fa-search" aria-hidden="true"></i>
+                          &nbsp;Tìm</button>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="card-header bg-danger">
+                    <h3 class="card-title">Danh sách các dự án đang phân công:</h3>
+                  </div>
+                  <div class="card-body p-0 table-reponsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th style="width: 10px">#</th>
+                          
+                          <th>Dự án</th>
+                          <th>Lĩnh vực</th>
+                          <th>Thành Viên</th>
+                          <th>Bắt đầu</th>
+                          <th>Kết thúc</th>
+                          <th style="width: 100px">Thao tác</th>
+                        </tr>
+                      </thead>
+                      <tbody class="addListjoin">
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="numberpagejoin"></div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <!-- ket thuc -->
+          <!-- form adv -->
+          <div class="row frmarea is-hidden">
+            <div class="col-lg-12 col-12">
+              <div class="card card-info">
+                <div class="card-header bg-danger">
+                  <h3 class="card-title"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;Thông tin các lĩnh vực khảo sát</h3>
+                </div>
+               
+                
+                  <div class="card-body">
+                    <div class="form-group row">
+                      <label for="inputEmail3" class="col-sm-2 ">Mã số Lĩnh Vực(*):</label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control txtidarea" placeholder="">
+                      </div>
+                      <label for="inputEmail3" class="col-sm-2 ">Tên Lĩnh Vực(*)</label>
+                      <div class="col-sm-4 ">
+                           <input type="text" class="form-control txtnamearea" placeholder="">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <!-- <label for="inputPassword3" class="col-sm-2 col-form-label">Thuộc dự án(*)</label> -->
+                      <!-- <div class="col-sm-4">
+                        <select class="form-control cbpro">
+							<option value="NULL">Chọn dự án</option>
+                        </select>
+                      </div> -->
+                     
+                      <label class=" col-sm-2"> Biểu tượng</label>
+                      <div class="col-sm-4">
+                        <div class="iconimage">
+                       
+                          <input id="imgiconarea" class="imghhhh" style="display:none" type="file"
+                            accept=".png, .jpg, .jpeg" />
+                          <a href="#">
+                            <label for="imgiconarea" class="custom-file-upload" id="imgiconarea">
+                              <img width="25px" style="border:0px" src="images/iconuploadimage.png" />Chọn
+                              Biểu tượng</label>
+                          </a>
+                        </div>
+                        <div class="col-sm-2 imgiconarea is-hidden">
+                          <img id="imgPreviewarea" width="100px" height="100">
+
+                        </div>
+                      </div>
+                      <label class="progresscommonarea col-sm-2"> </label>
+                    </div>
+
+
+                  </div>
+
+                 <div class="card-footer">
+                        <button type="button" class="btn btn-info btnthemarea"><i
+                            class="far fa-plus-square"></i>&nbsp;Thêm</button>&nbsp;<button type="button"
+                          class="btn btn-info btnluuarea"><i class="fa fa-floppy-o" aria-hidden="true"></i>
+                          &nbsp;Lưu</button>&nbsp;<button type="button"
+                          class="btn btn-info btnxoaarea"><i class="fa fa-trash" aria-hidden="true"></i>
+                          &nbsp;Xóa</button>&nbsp;<button type="button"
+                          class="btn btn-info btnsuaarea"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+
+                          &nbsp;Sửa</button>
+                        <button type="button" class="btn btn-default float-right btnlamlaiarea"><i class="fa fa-refresh" aria-hidden="true"></i>
+&nbsp;                          Làm lại</button>
+                      </div>
+<div class="card">
+                  <div class="card-header">
+                    <div class="input-group input-group-sm">
+                      <input type="text" class="form-control txtfindarea"
+                        placeholder='Gõ nội dung và nhấn Enter hoặc nút Tìm '>
+                      <span class="input-group-append">
+                        <button type="button" class="btn btn-info btn-flat btnfindarea"><i class="fa fa-search" aria-hidden="true"></i>
+                          &nbsp;Tìm</button>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="card-header bg-danger">
+                    <h3 class="card-title">Các lĩnh vực khảo sát:</h3>
+                  </div>
+                  <div class="card-body p-0 table-reponsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th style="width: 10px">#</th>
+                          <th>Mã LV</th>
+                          <th>Tên LV</th>
+                         
+                          <th>Icon</th>
+                         
+                          <th style="width: 100px">Thao tác</th>
+                        </tr>
+                      </thead>
+                      <tbody class="addListAREA">
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="numberpagearea"></div>
+                </div>
+              
+                
+              </div>
+            </div>
+          </div>
+          <!-- ket thuc -->
+
+
+        </div>
+        <!-- /.card -->
+      </section>
+      <!-- right col -->
+    </div>
+    <!-- /.row (main row) -->
+  </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+  </div>
+ 
+  <!-- modal doi mat khau -->
+  <div class="modal fade bd-example-modal-lg showmodalevent">
+    <div class="modal-dialog modal-lg" style="width: 100%;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h6 class="modal-title">Chọn Event để phát theo chủ đề sự kiện:
+
+          </h6>
+
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="card">
+            <h4>Bạn đang chọn:<b class="idvideoimage"></b> và <b class="namevideoimage"></b></h4>
+            <div class="card-body login-card-body">
+
+
+
+              <label>Chọn Event </label>
+              <select class="form-control cbchonevent">
+
+              </select>
+
+            </div>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-primary btn_insert_video_image">Thêm</button>
+          </div>
+          <div class="modal-footer justify-content-between">
+            Danh sách File trong Event
+          </div>
+          <div class="card-body table-responsive p-0">
+            <table class="table table-hover text-nowrap">
+              <thead>
+                <tr>
+                  <th>STT</th>
+                  <th>Hành động</th>
+                  <th>Tên sự kiện</th>
+                  <th>Tên Video/Image</th>
+                  <th>Kiểu</th>
+                  <th>Người thêm</th>
+                </tr>
+              </thead>
+              <tbody class="addListEventImage">
+
+              </tbody>
+            </table>
+          </div>
+          <div class="numberpageeventimages">
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <div class="modal fade start_video_image" id="myModalevent" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+
+          <h4 class="modal-title">Xem trước: <b class="addTitlestart"></b> </h4>
+        </div>
+        <div class="modal-body add_video_images"
+          style="display: block;margin-left: auto;margin-right: auto;width: 100%;">
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- kết thúc modal đổi mật khẩu -->
+  <!-- modal doi mat khau -->
+  <div class="modal fade showmodalchangematkhau" id="modal-default">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Thay đổi mật khẩu</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="card">
+            <div class="card-body login-card-body">
+
+              <form action="#" method="post">
+
+                <div class="input-group mb-3">
+                  <input type="password" class="form-control txtpassnew" placeholder="Mật khẩu mới">
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <span class="fas fa-key"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="input-group mb-3">
+                  <input type="password" class="form-control txtpassnewagain" placeholder="Nhập lại mật khẩu mới">
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <span class="fas fa-key"></span>
+                    </div>
+                  </div>
+                </div>
+              </form>
+
+            </div>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary btn_change_pass">Thay đổi</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <!-- kết thúc modal đổi mật khẩu -->
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2023 <a href="https://test.infortlus.com">CDS</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 1
+    </div>
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+  </div>
+  <!-- ./wrapper -->
+
+  <!-- jQuery -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <!-- jQuery UI 1.11.4 -->
+  <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+  <script>
+    $.widget.bridge('uibutton', $.ui.button)
+  </script>
+  <!-- Bootstrap 4 -->
+
+  <script>
+
+  </script>
+  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <script src="plugins/jqvmap/jquery.vmap.min.js"></script>
+  <script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+  <!-- jQuery Knob Chart -->
+  <script src="plugins/jquery-knob/jquery.knob.min.js"></script>
+  <!-- daterangepicker -->
+  <script src="plugins/moment/moment.min.js"></script>
+  <script src="plugins/daterangepicker/daterangepicker.js"></script>
+
+  <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+  <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+  <script src="js/bootbox.min.js"></script>
+  <script src="dist/js/adminlte.js"></script>
+ <!--  
+  <script src="js/xulyarea.js"></script>
+  <script src="js/xulyjoin.js"></script>
+  <script src="js/xulyduan.js"></script>
+  <script src="js/xulyusers.js"></script> -->
+  <!-- <script src="js/common.js"></script>
+  <script src="js/menu.js"></script> -->
+  <script>
+    function loadJS(FILE_URL, async = true) {
+    let scriptEle = document.createElement("script");
+  
+    scriptEle.setAttribute("src", FILE_URL);
+    scriptEle.setAttribute("type", "text/javascript");
+    scriptEle.setAttribute("async", async);
+  
+    document.body.appendChild(scriptEle);
+  
+    // success event 
+    scriptEle.addEventListener("load", () => {
+      console.log("File loaded")
+    });
+     // error event
+    scriptEle.addEventListener("error", (ev) => {
+      console.log("Error on loading file", ev);
+    });
+  }
+ // $(document).ready(function () {
+    const d = new Date();
+  let time = d.getTime();
+  loadJS("js/common.js?v="+time, false);
+  loadJS("js/xulyarea.js?v="+time, false);
+  loadJS("js/xulyjoin.js?v="+time, false);
+  loadJS("js/xulyduan.js?v="+time, false);
+  loadJS("js/xulyusers.js?v="+time, false);
+  loadJS("js/menu.js?v="+time, false);
+ 
+  
+  //});
+  </script>
+</body>
+
+</html>
